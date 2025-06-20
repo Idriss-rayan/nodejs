@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Idriss-rayan/nodejs#readme",
   "description": "",
   "dependencies": {
+    "bootstrap": "^5.3.7",
     "loadash": "^1.0.0"
   }
 }
