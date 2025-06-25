@@ -6,7 +6,7 @@ customEmiter.on('response',()=>{
     console.log(`data recieved`)
 })
 customEmiter.on('response',()=>{
-    console.log(`some other logic here`)
+    console.log(`some  logic here`)
 })
 
 
