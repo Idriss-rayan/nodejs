@@ -1,14 +1,17 @@
-var http = require('http')
-var fs = require('fs')
+const http = require('http');
+const fs = require('fs');
 
 http
-.createServer(function(req, res){
-    const fileStream = fs.createReadStream('./content/big.txt' , 'utf8');
-    fileStream.on('open',()=>{
-        fileStream.pipe(res)
-    })
-})
-fileStream.on('error', (err)=>{
-    res.end(end)
-})
-.listen(5000)
+  .createServer((req, res) => {
+    const fileStream = fs.createReadStream('./content/big.txt', 'utf8');
+    
+    fileStream.on('error', (err) => {
+      res.statusCode = 500;
+      res.end('Erreur lors de la lecture du fichier');
+    });
+
+    fileStream.pipe(res); // Envoie le contenu du fichier directement au client
+  })
+  .listen(5000, () => {
+    console.log('Serveur en écoute sur http://localhost:5000');
+  });
