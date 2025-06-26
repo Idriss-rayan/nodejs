@@ -1,9 +1,8 @@
-const http = require('http')
+const {createReadStream} = require('fs');
+const { result } = require('lodash');
 
-const server = http.createServer()
+const stream = createReadStream('./content/big.txt')
 
-server.on('request',(req, res) =>{
-    res.end('Welcome')
+stream.on('data' , (result) => {
+    console.log(result)
 })
-
-server.listen(5000)
