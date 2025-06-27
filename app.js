@@ -1,1 +1,3 @@
-const ray = require('path')
+const http = require('http')
+
+const server = http.createServer((req, res)=>{})
