@@ -1,21 +1,18 @@
 const express = require('express');
-const app = express();
+const path = require('path'); // ← cette ligne est essentielle
 
-let a = 0; // Déclaration correcte
+const app = express()
+
+app.use(express.static('./public'))
 
 app.get('/', (req, res) => {
-    console.log('user hit the resource');
-    res.status(200).send(`Home Page ${a++}`);
-});
-
-app.get('/about', (req, res) => {
-    res.status(200).send('About page');
+    res.sendFile(path.join(__dirname, './navbar-app/index.html'));
 });
 
 app.all('/*splat', (req, res) => {
-    res.status(404).send('<h1>Resource not found</h1>');
+    res.status(404).send('resource not found');
 });
 
 app.listen(5000, () => {
-    console.log('server is listening on the port 5000...');
+    console.log(`server is listening on port 5000 ...`);
 });
