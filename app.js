@@ -1,22 +1,9 @@
 const express = require('express')
-const morgan = require('morgan')
 const app = express()
-const logger = require('./logger')
-const authorize = require('./authorize')
+let { people } = require('./data')
 
-app.use(logger)
 
-app.get('/', (req, res) => {
-  res.send('Home')
-})
-app.get('/about', (req, res) => {
-  res.send('About')
-})
 
-app.get('/api/products', authorize, (req, res) => {
-  res.send(`Produits pour ${req.user.name}`)
-})
-
-app.get('/api/items', authorize, (req, res) => {
-  res.send(`Articles accessibles à ${req.user.name}`)
+app.listen(5000,()=>{
+  console.log('Server is listening on port 5000 ...')
 })
