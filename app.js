@@ -1,4 +1,5 @@
 const express = require('express')
+const morgan = require('morgan')
 const app = express()
 const logger = require('./logger')
 const authorize = require('./authorize')
