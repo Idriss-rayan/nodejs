@@ -3,27 +3,22 @@ const app = express()
 const logger = require('./logger')
 const authorize = require('./authorize')
 
-// req => middleware function
-app.use([logger, authorize])
-
-// req => middleware => res
+// Logger appliqué globalement
 app.use(logger)
 
+// Routes publiques
 app.get('/', (req, res) => {
   res.send('Home')
 })
 app.get('/about', (req, res) => {
   res.send('About')
 })
-app.get('/api/products', (req, res) => {
-  res.send('Products')
+
+// Routes protégées (autorisation requise)
+app.get('/api/products', authorize, (req, res) => {
+  res.send(`Produits pour ${req.user.name}`)
 })
-app.get('/api/items', (req, res) => {
-  res.send('Items')
-})
 
-
-
-app.listen(5000, () => {
-  console.log('Server is listening on port 5000 ...')
+app.get('/api/items', authorize, (req, res) => {
+  res.send(`Articles accessibles à ${req.user.name}`)
 })
