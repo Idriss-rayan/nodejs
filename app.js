@@ -36,7 +36,12 @@ app.post('/login',(req, res)=>{
   if(name){
     return res.status(200).send(`Welcome ${name}`)
   }
-  res.status(401).send('please!!! ')
+  res.status(401).send('please provide credentials')
+})
+
+app.put('/api/people/:id', (req, res) => {
+  const { id } = req.params
+  const{ name } = req.body
 })
 
 
