@@ -53,7 +53,9 @@ app.put('/api/people/:id', (req, res) => {
     if(person.id === Number(id)){
       person.name = name
     }
+    return person
   })
+  res.status(200).json({success: true,data: newpeople})
 
 })
 
