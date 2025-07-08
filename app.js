@@ -36,7 +36,7 @@ app.post('/login',(req, res)=>{
   if(name){
     return res.status(200).send(`Welcome ${name}`)
   }
-  res.status(401).send('please provide credentials')
+  res.status(401).send('please  credentials')
 })
 
 app.put('/api/people/:id', (req, res) => {
